@@ -113,7 +113,9 @@ function cambiarNombres(){
     // autosize(document.getElementById("resultadoF"));
     ponerTabla();
 }
+var todasTablas=[];
 function ponerTabla(){
+    todasTablas=[];
     var tablas=document.getElementById('areaTablas').value;
     var everyTable=[];
     while(true){
@@ -128,7 +130,7 @@ function ponerTabla(){
             break;
         }
     }
-    console.log(everyTable);
+    //console.log(everyTable);
     html='';
     for(let i=0;i<everyTable.length;i++){
         html+=`<p>Tabla: ${i+1}</p>`
@@ -136,10 +138,14 @@ function ponerTabla(){
         html+=crearRows(everyTable[i]);
         html+=`</table>`
     }
+    todasTablas[todasTablas.length-1].pop();
+    todasTablas[todasTablas.length-1].pop();
+    console.log(todasTablas);
     document.getElementById('newTables').innerHTML=html;
 }
 
 function crearRows(unaTabla){
+    var tablaUna=[]
     var primero=true;
     tableHtml=``;
     while(true){
@@ -147,36 +153,42 @@ function crearRows(unaTabla){
             var currentRow=unaTabla.substring(0,unaTabla.indexOf('\n'));
             unaTabla=unaTabla.substring(unaTabla.indexOf('\n')+1,unaTabla.length);
             tableHtml+=`<tr>`
-                while(true){
+            var unRenglon=[]
+            while(true){
                     if(currentRow.indexOf('|')!=-1){
                         oneItem=currentRow.substring(0,currentRow.indexOf('|'));
-                        console.log(oneItem)
+                        //console.log(oneItem)
                         currentRow=currentRow.substring(currentRow.indexOf('|')+1,currentRow.length);
-                        if(primero){
+                        if(isNaN(parseFloat(oneItem))){
                             tableHtml+=`<th class="table">${oneItem}</th>`;
-                            primero=false;
+                            unRenglon.push(oneItem)
                         }else{
                             tableHtml+=`<td class="table">${oneItem}</td>`;
+                            unRenglon.push(parseFloat(oneItem))
                         }
                     }else{
                         //console.log('me salgo');
                         break;
                     }
                 }
-            
+            tablaUna.push(unRenglon);
             tableHtml+=`</tr>`;
         }else{
             currentRow=unaTabla;
+            var unRenglon=[]
             while(true){
                 if(currentRow.indexOf('|')!=-1){
                     oneItem=currentRow.substring(0,currentRow.indexOf('|'));
                     currentRow=currentRow.substring(currentRow.indexOf('|')+1,currentRow.length);
                     tableHtml+=`<td class="table">${oneItem}</td>`;
+                    unRenglon.push(parseFloat(oneItem))
                 }else{
                     //console.log('me salgo2')
                     break;
                 }
             }
+            tablaUna.push(unRenglon);
+            todasTablas.push(tablaUna);
             break;
         }
     }
