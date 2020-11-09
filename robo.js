@@ -53,6 +53,7 @@ function franson(){ //Calcular
     // w - y >= 10`
     doIt(2); doIt(1);
     cambiarNombres();
+    console.log(todosPivotes);
 }
 function numeroDeVariables(){
     var limpiar=document.getElementById('todasRestricciones');

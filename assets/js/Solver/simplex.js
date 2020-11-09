@@ -818,12 +818,14 @@ return(outArray);
 
 
 // *******************PIVOT **********************
-
+var todosPivotes=[]
 function pivot(InMatrix,rows,cols,theRow,theCol) {
 
 // alert("theRow = " + theRow + "theCol" + theCol);
 
 var thePivot = InMatrix[theRow][theCol];
+console.log('Renglon Pivote: ', theRow, 'Columna: ', theCol);
+todosPivotes.push([theRow,theCol]);
 
 
 
@@ -901,7 +903,7 @@ var testRatio = new Array();
 var theRow = 0; singular = false;
 
 document.theSpreadsheet.expr.value = "working..";
-
+todosPivotes=[]
 
 
 // alert("HERE")
