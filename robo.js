@@ -85,6 +85,24 @@ function franson(){ //Calcular
         }
         html+=`</table>`
     }
+    var lastTable=todasTablas[todasTablas.length-1];
+    var direnteCero=0;
+    for(let i=0;i<lastTable.length;i++){
+        if(i!=0 && i!=lastTable.length-1){
+            var lastOne=lastTable[i][lastTable[i].length-1]
+            console.log(lastOne)
+            if(lastOne!=0){
+                direnteCero++;
+            }
+        }
+    }
+    var texto='';
+    if(direnteCero==numRes){
+        texto='<p>Solucion No Degenerada</p>'
+    }else{
+        texto='<p>Solucion Degenerada</p>';
+    }
+    document.getElementById('degen').innerHTML=texto;
     document.getElementById('newTables').innerHTML=html;
 }
 function numeroDeVariables(){
