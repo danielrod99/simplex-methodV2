@@ -54,6 +54,38 @@ function franson(){ //Calcular
     doIt(2); doIt(1);
     cambiarNombres();
     console.log(todosPivotes);
+    let html=''
+    for(let i=0;i<todasTablas.length;i++){
+        var unaTabla=todasTablas[i];
+        html+=`<p>Tabla: ${i+1}</p>`
+        html+=`<table>`
+        for(let j=0;j<unaTabla.length;j++){
+            var todasFilas=unaTabla[j];
+            html+=`<tr>`
+            for(let k=0;k<todasFilas.length;k++){
+                var unObjeto=todasFilas[k];
+                if(unObjeto===""){
+                    unObjeto='Valor';
+                }
+                if(i<todosPivotes.length){
+                    if(k==(todosPivotes[i][1]-1)&&j==todosPivotes[i][0]){
+                        html+=`<td class="table centro">${unObjeto}</td>`
+                    }else if(j==todosPivotes[i][0]){
+                        html+=`<td class="table entra">${unObjeto}</td>`
+                    }else if(k==(todosPivotes[i][1]-1)){
+                        html+=`<td class="table sale">${unObjeto}</td>`
+                    }else{
+                        html+=`<td class="table" style="">${unObjeto}</td>`
+                    }
+                }else{
+                    html+=`<td class="table" style="">${unObjeto}</td>`
+                }
+            }
+            html+=`</tr>`
+        }
+        html+=`</table>`
+    }
+    document.getElementById('newTables').innerHTML=html;
 }
 function numeroDeVariables(){
     var limpiar=document.getElementById('todasRestricciones');

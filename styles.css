@@ -68,3 +68,12 @@ input[type=number] {
     padding: 15px;
     text-align: left;
   }
+  .entra{
+      background-color: #cccccc;
+  }
+  .sale{
+      background-color: lightblue;
+  }
+  .centro{
+      background-color: lightgreen;
+  }
