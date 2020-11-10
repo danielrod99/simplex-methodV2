@@ -77,3 +77,14 @@ input[type=number] {
   .centro{
       background-color: lightgreen;
   }
+  .sel{
+    background-color: #eee;
+    border: 0px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  input[type="number"]{
+      border-radius: 3px;
+      margin-left: 2px;
+      margin-right: 2px;
+  }

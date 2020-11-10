@@ -168,12 +168,12 @@ function numeroDeRestricciones(){
         for(let i=0; i<parseFloat(numVariables.value);i++){
             content+=`<input class="inputRes" type="number" step="any" id="resx${i+1}Res${a}"><label>X${i+1} ${i==parseInt(numVariables.value)-1 ? ' ' : '+'} </label>`
         }
-        content+=` <select id="igualadorX${a+1}Res${a}">
+        content+=` <select class="sel" id="igualadorX${a+1}Res${a}">
                     <option value="<="><=</option>
                     <option value=">=">>=</option>
                     <option value="=">=</option>
                 </select>
-                <input class="inputRes" id="resX${a+1}Res${a}" type="number" step="any"><br>`;
+                <input class="inputRes" id="resX${a+1}Res${a}" type="number" step="any"><br><br>`;
     }
     document.getElementById('todasRestricciones').innerHTML=content
 }
