@@ -90,7 +90,7 @@ function franson(){ //Calcular
     for(let i=0;i<lastTable.length;i++){
         if(i!=0 && i!=lastTable.length-1){
             var lastOne=lastTable[i][lastTable[i].length-1]
-            console.log(lastOne)
+            //console.log(lastOne)
             if(lastOne!=0){
                 direnteCero++;
             }
@@ -104,6 +104,44 @@ function franson(){ //Calcular
     }
     document.getElementById('degen').innerHTML=texto;
     document.getElementById('newTables').innerHTML=html;
+    var col=lastTable.length;
+    var row=lastTable[0].length;
+    var allVariables=[];
+    //console.log(col,row)
+    for(let i=0;i<row;i++){       
+        var variable=''
+        var posicion=0;
+        var valid=true;
+        for(let j=0;j<col;j++){
+            if(j>row){
+                break;
+            }
+            if(j==0){
+                variable=lastTable[j][i];
+            }else{
+                if(lastTable[j][i]!=1&&lastTable[j][i]!=0){
+                    allVariables.push({'variable': variable, 'posicion': 0,'valor': 0});
+                    valid=false;
+                    break;
+                }
+                console.log(lastTable[j][i])
+                if(lastTable[j][i]==1){
+                    posicion=j;
+                }
+            }
+        }
+        if(valid){
+            allVariables.push({'variable': variable, 'posicion': posicion,'valor': lastTable[posicion][lastTable[0].length-1]});
+        }
+    }
+    console.log(allVariables)
+    unHtml=''
+    for (let i = 0; i < allVariables.length; i++) {
+        if(allVariables[i].variable.indexOf('x')==-1&&allVariables[i].variable.indexOf('p')==-1&&allVariables[i].variable!=''){
+            unHtml+=`<p>${allVariables[i].variable} = ${allVariables[i].valor}</p>`
+        }
+    }
+    document.getElementById('otherAnswers').innerHTML=unHtml;
 }
 function numeroDeVariables(){
     var limpiar=document.getElementById('todasRestricciones');
